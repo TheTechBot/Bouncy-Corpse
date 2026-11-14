@@ -1,13 +1,13 @@
 extends Area2D
-## Invisible zone that shows a tip once when the player walks in.
 
-@export_multiline var text := ""
-@export var seconds := 4.0
-var shown := false
+#invisible box. when the player walks in it shows the riddle text
+
+@export_multiline var text = ""
+@export var seconds = 6.0
+var shown = false
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if shown or not body.has_method("die"):
-		return
-	shown = true
-	GameManager.show_message(text, seconds)
+func _on_body_entered(body):
+	if body.name == "Player" and shown == false:
+		shown = true
+		GameManager.show_message(text, seconds)

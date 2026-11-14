@@ -1,14 +1,9 @@
 extends Area2D
-## Anything that kills the player: slimes, spikes, and the bottom of the world.
 
-## Leave a dead body behind? (false for falling off the map)
-@export var leaves_corpse := true
+#untick this in the inspector if u dont want a body (we use that for the water)
+@export var leaves_body = true
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body):
 	if body.has_method("die"):
-		body.die(leaves_corpse)
-
-
-func _on_timer_timeout() -> void:
-	pass  # kept so old scene connections still work
+		body.die(leaves_body)

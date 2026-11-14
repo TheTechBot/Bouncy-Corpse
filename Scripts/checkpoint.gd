@@ -1,17 +1,11 @@
 extends Area2D
-## Touch the flag -> you respawn here after dying.
 
-const SFX := preload("res://Assets/sounds/power_up.wav")
-var active := false
-
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+var touched = false
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if active or not body.has_method("die"):
-		return
-	active = true
-	sprite.play("up")
-	GameManager.set_checkpoint(global_position + Vector2(-5, -2))
-	GameManager.play_sfx(SFX, 1.0, -6.0)
-	GameManager.show_message("CHECKPOINT!", 1.5)
+func _on_body_entered(body):
+	if body.name == "Player" and touched == false:
+		touched = true
+		$AnimatedSprite2D.play("up")
+		GameManager.checkpoint_position = global_position + Vector2(-5, -2)
+		GameManager.show_message("CHECKPOINT!", 1.5)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/goal.gd" id="1_cans3"]
 [ext_resource type="Texture2D" path="res://Assets/sprites/trophy.png" id="2_trophy"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/power_up.wav" id="snd_WinSound"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_woauw"]
 size = Vector2(14, 14)
@@ -54,5 +55,8 @@ shape = SubResource("RectangleShape2D_woauw")
 sprite_frames = SubResource("SpriteFrames_trophy")
 animation = &"shine"
 autoplay = "shine"
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("snd_WinSound")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
