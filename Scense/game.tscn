@@ -575,7 +575,7 @@ seconds = 6.0
 
 [node name="Hint7" parent="Hints" instance=ExtResource("bc_hn")]
 position = Vector2(1848, -32)
-text = "FINAL RIDDLE: The fruit is WAY up there.
+text = "FINAL RIDDLE: The trophy is WAY up there.
 Die... bounce... die again... bounce again!"
 seconds = 6.0
 

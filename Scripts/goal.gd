@@ -1,5 +1,5 @@
 extends Area2D
-## The fruit at the end of the level.
+## The trophy at the end of the level.
 
 const SFX := preload("res://Assets/sounds/power_up.wav")
 var done := false

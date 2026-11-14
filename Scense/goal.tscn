@@ -1,14 +1,46 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://Scripts/goal.gd" id="1_cans3"]
-[ext_resource type="Texture2D" path="res://Assets/sprites/fruit.png" id="2_6c3tv"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/trophy.png" id="2_trophy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_woauw"]
 size = Vector2(14, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5ahv"]
-atlas = ExtResource("2_6c3tv")
+[sub_resource type="AtlasTexture" id="Trophy_0"]
+atlas = ExtResource("2_trophy")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="Trophy_1"]
+atlas = ExtResource("2_trophy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="Trophy_2"]
+atlas = ExtResource("2_trophy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="Trophy_3"]
+atlas = ExtResource("2_trophy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trophy"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("Trophy_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Trophy_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Trophy_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Trophy_3")
+}],
+"loop": true,
+"name": &"shine",
+"speed": 8.0
+}]
 
 [node name="Goal" type="Area2D" unique_id=55235713]
 collision_layer = 0
@@ -18,7 +50,9 @@ script = ExtResource("1_cans3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200671614]
 shape = SubResource("RectangleShape2D_woauw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239087412]
-texture = SubResource("AtlasTexture_m5ahv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1239087412]
+sprite_frames = SubResource("SpriteFrames_trophy")
+animation = &"shine"
+autoplay = "shine"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
