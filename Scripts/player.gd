@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote -= delta
 	jump_buffer -= delta
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("Jump"):
 		jump_buffer = JUMP_BUFFER
 
 	if jump_buffer > 0.0 and coyote > 0.0:
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		squash(Vector2(0.8, 1.2))
 
 	# variable jump height
-	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+	if Input.is_action_just_released("Jump") and velocity.y < 0.0:
 		velocity.y *= JUMP_CUT
 
 	# --- horizontal movement with acceleration ---
@@ -98,6 +98,12 @@ func _physics_process(delta: float) -> void:
 			bounce_on(other)
 			break
 
+	# animations (Idle / run / jump from the Pixel Adventure frog)
+	if is_on_floor():
+		sprite.play("Idle" if absf(velocity.x) < 10.0 else "run")
+	else:
+		sprite.play("jump")
+
 	# landing squash
 	if is_on_floor() and not was_on_floor and fall_speed > 150.0:
 		squash(Vector2(1.25, 0.8))
@@ -105,7 +111,7 @@ func _physics_process(delta: float) -> void:
 
 
 func bounce_on(corpse: Node) -> void:
-	velocity.y = BOUNCE_VELOCITY_HELD if Input.is_action_pressed("jump") else BOUNCE_VELOCITY
+	velocity.y = BOUNCE_VELOCITY_HELD if Input.is_action_pressed("Jump") else BOUNCE_VELOCITY
 	coyote = 0.0
 	jump_buffer = 0.0
 	bounce_lock = 0.1

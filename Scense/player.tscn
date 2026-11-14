@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://pdbfcsmsxtjj"]
 
-[ext_resource type="Script" uid="uid://ptttgvys6qbq" path="res://Scripts/player.gd" id="1_1qvld"]
+[ext_resource type="Script" uid="uid://p85fif1kbd2e" path="res://Scripts/player.gd" id="1_1qvld"]
 [ext_resource type="Texture2D" uid="uid://daefvtp2u0w2u" path="res://Assets/sprites/Idle (32x32).png" id="2_1qvld"]
+[ext_resource type="Texture2D" uid="uid://bx3amc4werjkg" path="res://Assets/sprites/Jump (32x32).png" id="3_ro3v3"]
+[ext_resource type="Texture2D" uid="uid://bpi7fgbocdrfg" path="res://Assets/sprites/Run (32x32).png" id="4_ta2my"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0tup"]
 atlas = ExtResource("2_1qvld")
@@ -47,6 +49,58 @@ region = Rect2(288, 0, 32, 32)
 atlas = ExtResource("2_1qvld")
 region = Rect2(320, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvpm"]
+atlas = ExtResource("3_ro3v3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwkac"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfed4"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16oj0"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gs8s"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5a25"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akr2v"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyba2"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmgvt"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfqsv"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efe5e"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fc08"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t111"]
+atlas = ExtResource("4_ta2my")
+region = Rect2(352, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ql73s"]
 animations = [{
 "frames": [{
@@ -86,6 +140,55 @@ animations = [{
 "loop": 1,
 "name": &"Idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvpm")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwkac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfed4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16oj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gs8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5a25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akr2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyba2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmgvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfqsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efe5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fc08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t111")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4esgd"]
@@ -100,9 +203,9 @@ script = ExtResource("1_1qvld")
 position = Vector2(5, -7.0000005)
 scale = Vector2(0.6875, 0.71875)
 sprite_frames = SubResource("SpriteFrames_ql73s")
-animation = &"Idle"
+animation = &"jump"
 autoplay = "Idle"
-frame_progress = 0.50715774
+frame_progress = 0.4933809
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1232980244]
 position = Vector2(5, -3)
