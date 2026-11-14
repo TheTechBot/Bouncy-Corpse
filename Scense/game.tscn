@@ -3,12 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://be2brsp418mj7" path="res://Assets/sprites/backgroundColorFall.png" id="1_1xu0k"]
 [ext_resource type="PackedScene" uid="uid://pdbfcsmsxtjj" path="res://Scense/player.tscn" id="1_4i0el"]
 [ext_resource type="Texture2D" uid="uid://68i868lguwy" path="res://Assets/sprites/backgroundColorDesert.png" id="1_hfcib"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://xec437lbi6ne" path="res://Assets/sprites/backgroundForest.png" id="1_inqpy"]
 [ext_resource type="Texture2D" uid="uid://b23j8ia3iddid" path="res://Assets/sprites/backgroundColorGrass.png" id="2_1xu0k"]
 [ext_resource type="PackedScene" uid="uid://bdfah8tvgk3n0" path="res://Scense/platform.tscn" id="2_d5lo2"]
-=======
->>>>>>> 5a70d95 (charector movment face change)
 [ext_resource type="Texture2D" uid="uid://b1pvftqvicc76" path="res://Assets/sprites/world_tileset.png" id="2_oxfsv"]
 [ext_resource type="PackedScene" uid="uid://burohuetw2o4q" path="res://Scense/coin.tscn" id="4_lluif"]
 [ext_resource type="PackedScene" uid="uid://b0jih5po22hks" path="res://Scense/kill_zone.tscn" id="5_vn7wn"]
