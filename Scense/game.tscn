@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://sjsr25341ce7"]
 
 [ext_resource type="PackedScene" uid="uid://pdbfcsmsxtjj" path="res://Scense/player.tscn" id="1_4i0el"]
+[ext_resource type="Texture2D" uid="uid://68i868lguwy" path="res://Assets/sprites/backgroundColorDesert.png" id="1_hfcib"]
 [ext_resource type="PackedScene" uid="uid://bdfah8tvgk3n0" path="res://Scense/platform.tscn" id="2_d5lo2"]
 [ext_resource type="Texture2D" uid="uid://b1pvftqvicc76" path="res://Assets/sprites/world_tileset.png" id="2_oxfsv"]
 [ext_resource type="PackedScene" uid="uid://burohuetw2o4q" path="res://Scense/coin.tscn" id="4_lluif"]
@@ -221,6 +222,11 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ql73s"]
 
 [node name="Game" type="Node2D" unique_id=574702287]
+
+[node name="BackgroundColorDesert" type="Sprite2D" parent="." unique_id=1832013745]
+position = Vector2(-599.00006, 28)
+scale = Vector2(0.567627, 0.4267578)
+texture = ExtResource("1_hfcib")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=450482732]
 tile_set = SubResource("TileSet_ql73s")
