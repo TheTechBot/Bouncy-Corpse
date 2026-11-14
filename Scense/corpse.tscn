@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/corpse.gd" id="1_xj3uc"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/Idle (32x32).png" id="2_m86oe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtypu"]
+atlas = ExtResource("2_m86oe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlw1r"]
+size = Vector2(16, 8)
+
+[node name="Corpse" type="CharacterBody2D" unique_id=2056054427]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_xj3uc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103250252]
+position = Vector2(5, -2)
+scale = Vector2(0.6875, 0.5)
+texture = SubResource("AtlasTexture_qtypu")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=491786378]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_wlw1r")

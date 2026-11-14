@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/kill_zone.gd" id="1_xryaf"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/spikes.png" id="2_xju1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52er7"]
+size = Vector2(14, 5)
+
+[node name="Spikes" type="Area2D" unique_id=292718978]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xryaf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=352809094]
+texture = ExtResource("2_xju1n")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525675395]
+position = Vector2(8, 13)
+shape = SubResource("RectangleShape2D_52er7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

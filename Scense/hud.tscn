@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_fxjxu"]
+[ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8.ttf" id="2_gcunw"]
+[ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_pnp28"]
+
+[node name="HUD" type="CanvasLayer" unique_id=398608729]
+script = ExtResource("1_fxjxu")
+
+[node name="Top" type="HBoxContainer" parent="." unique_id=212255519]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 16.0
+offset_bottom = 12.0
+theme_override_constants/separation = 32
+
+[node name="Coins" type="Label" parent="Top" unique_id=112926123]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_gcunw")
+theme_override_font_sizes/font_size = 24
+text = "Coins"
+
+[node name="Deaths" type="Label" parent="Top" unique_id=1422841844]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_gcunw")
+theme_override_font_sizes/font_size = 24
+text = "Deaths"
+
+[node name="Message" type="Label" parent="." unique_id=2103744659]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 90.0
+offset_right = 500.0
+offset_bottom = 260.0
+pivot_offset = Vector2(500, 40)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_pnp28")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 2
