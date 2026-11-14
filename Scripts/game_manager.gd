@@ -37,17 +37,45 @@ func _process(delta):
 	if message_time > 0:
 		message_time -= delta
 
-	#R = restart
-	if Input.is_action_just_pressed("restart"):
+	#only in a level (the menu and the end screen dont have a Player)
+	var in_level = get_tree().current_scene != null and get_tree().current_scene.has_node("Player")
+
+	#R = restart the level
+	if Input.is_action_just_pressed("restart") and in_level:
 		restart()
 
+	#ESC = back to menu
+	if Input.is_action_just_pressed("ui_cancel") and in_level:
+		go_to_menu()
 
-func restart():
-	score = 0
-	deaths = 0
-	bounces = 0
+
+#clears everything from the level we were in
+func reset_level():
 	has_checkpoint = false
 	level_complete = false
 	bodies.clear()
 	message_time = 0
+	Engine.time_scale = 1.0 #just in case we left while dying (slow motion)
+
+
+#called by the start button
+func new_game():
+	score = 0
+	deaths = 0
+	bounces = 0
+	reset_level()
+
+
+func restart():
+	reset_level()
 	get_tree().reload_current_scene()
+
+
+func go_to_level(path):
+	reset_level()
+	get_tree().change_scene_to_file(path)
+
+
+func go_to_menu():
+	reset_level()
+	get_tree().change_scene_to_file("res://Scense/menu.tscn")

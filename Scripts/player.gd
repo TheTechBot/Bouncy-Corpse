@@ -9,6 +9,7 @@ const BIG_BOUNCE_VELOCITY = -540.0 #if u hold jump when u land on a body
 var dead_body = preload("res://Scense/corpse.tscn")
 var is_dead = false
 var can_die = true
+var just_bounced = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
@@ -34,10 +35,11 @@ func _physics_process(delta: float) -> void:
 		if velocity.y > 0:
 			velocity += get_gravity() * delta * 0.4
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	# Handle jump. (not right after a bounce or the jump cancels the bounce!)
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and just_bounced == false:
 		velocity.y = JUMP_VELOCITY
 		jump_sound.play()
+	just_bounced = false
 
 	#get directions = 1,0,-1
 	var direction := Input.get_axis("move_left", "move_right")
@@ -75,6 +77,7 @@ func bounce():
 		velocity.y = BIG_BOUNCE_VELOCITY
 	else:
 		velocity.y = BOUNCE_VELOCITY
+	just_bounced = true
 	bounce_sound.play()
 	GameManager.bounces += 1
 

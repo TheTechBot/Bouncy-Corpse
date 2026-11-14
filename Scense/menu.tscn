@@ -1,0 +1,131 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/backgroundColorGrass.png" id="2_bg"]
+[ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_bold"]
+[ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8.ttf" id="4_font"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/Idle (32x32).png" id="5_frog"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/trophy.png" id="6_trophy"]
+[ext_resource type="AudioStream" path="res://Assets/music/time_for_adventure.mp3" id="7_music"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frog"]
+atlas = ExtResource("5_frog")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trophy"]
+atlas = ExtResource("6_trophy")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_menu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 60.0
+offset_right = 1076.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_bold")
+theme_override_font_sizes/font_size = 56
+text = "BOUNCY CORPSE"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 145.0
+offset_right = 1076.0
+offset_bottom = 180.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+text = "die. bounce. win."
+horizontal_alignment = 1
+
+[node name="DeadFrog" type="TextureRect" parent="."]
+modulate = Color(0.6, 0.6, 0.7, 1)
+layout_mode = 0
+offset_left = 180.0
+offset_top = 468.0
+offset_right = 276.0
+offset_bottom = 516.0
+texture = SubResource("AtlasTexture_frog")
+expand_mode = 1
+flip_v = true
+
+[node name="Frog" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 372.0
+offset_right = 276.0
+offset_bottom = 468.0
+texture = SubResource("AtlasTexture_frog")
+expand_mode = 1
+
+[node name="Trophy" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 876.0
+offset_top = 420.0
+offset_right = 972.0
+offset_bottom = 516.0
+texture = SubResource("AtlasTexture_trophy")
+expand_mode = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 290.0
+offset_right = 706.0
+offset_bottom = 440.0
+theme_override_constants/separation = 16
+
+[node name="Start" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+theme_override_font_sizes/font_size = 28
+text = "START"
+
+[node name="Quit" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+theme_override_font_sizes/font_size = 28
+text = "QUIT"
+
+[node name="Help" type="Label" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 580.0
+offset_right = 1076.0
+offset_bottom = 610.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 16
+text = "A/D move    SPACE jump    R restart    ESC menu"
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_music")
+autoplay = true
+bus = &"music"
+
+[connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
