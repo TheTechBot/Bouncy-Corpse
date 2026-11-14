@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://burohuetw2o4q" path="res://Scense/coin.tscn" id="4_lluif"]
 [ext_resource type="PackedScene" uid="uid://b0jih5po22hks" path="res://Scense/kill_zone.tscn" id="5_vn7wn"]
 [ext_resource type="PackedScene" uid="uid://dbc0pqhtc4mb8" path="res://Scense/slime.tscn" id="6_4esgd"]
+[ext_resource type="PackedScene" uid="uid://sjmauvxi0aa6" path="res://Scense/music.tscn" id="12_e1yxd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5lo2"]
 texture = ExtResource("2_oxfsv")
@@ -256,3 +257,6 @@ shape = SubResource("WorldBoundaryShape2D_ql73s")
 
 [node name="Slime" parent="." unique_id=200857721 instance=ExtResource("6_4esgd")]
 position = Vector2(88, 84)
+
+[node name="music" parent="." unique_id=1930039619 instance=ExtResource("12_e1yxd")]
+position = Vector2(-705, 99)
