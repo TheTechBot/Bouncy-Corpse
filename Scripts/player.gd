@@ -33,6 +33,7 @@ var jump_buffer := 0.0
 var was_on_floor := true
 var grace := 0.0          # invulnerable time after respawn
 var bounce_lock := 0.0    # ignore floor for a moment after a corpse bounce
+var jumping := false      # true only during a normal jump (so releasing SPACE never cuts a bounce)
 var base_scale := Vector2.ONE
 var spawn_position := Vector2.ZERO
 
@@ -69,13 +70,14 @@ func _physics_process(delta: float) -> void:
 
 	if jump_buffer > 0.0 and coyote > 0.0:
 		velocity.y = JUMP_VELOCITY
+		jumping = true
 		jump_buffer = 0.0
 		coyote = 0.0
 		GameManager.play_sfx(SFX_JUMP, randf_range(0.95, 1.05), -4.0)
 		squash(Vector2(0.8, 1.2))
 
 	# variable jump height
-	if Input.is_action_just_released("Jump") and velocity.y < 0.0:
+	if jumping and Input.is_action_just_released("Jump") and velocity.y < 0.0:
 		velocity.y *= JUMP_CUT
 
 	# --- horizontal movement with acceleration ---
@@ -98,6 +100,9 @@ func _physics_process(delta: float) -> void:
 			bounce_on(other)
 			break
 
+	if is_on_floor() or velocity.y >= 0.0:
+		jumping = false
+
 	# animations (Idle / run / jump from the Pixel Adventure frog)
 	if is_on_floor():
 		sprite.play("Idle" if absf(velocity.x) < 10.0 else "run")
@@ -112,6 +117,7 @@ func _physics_process(delta: float) -> void:
 
 func bounce_on(corpse: Node) -> void:
 	velocity.y = BOUNCE_VELOCITY_HELD if Input.is_action_pressed("Jump") else BOUNCE_VELOCITY
+	jumping = false
 	coyote = 0.0
 	jump_buffer = 0.0
 	bounce_lock = 0.1

@@ -49,5 +49,7 @@ restart={
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.811765, 0.937255, 0.988235, 1)
+
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
