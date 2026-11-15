@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://daefvtp2u0w2u" path="res://Assets/sprites/Idle (32x32).png" id="2_1qvld"]
 [ext_resource type="Texture2D" uid="uid://bx3amc4werjkg" path="res://Assets/sprites/Jump (32x32).png" id="3_ro3v3"]
 [ext_resource type="Texture2D" uid="uid://bpi7fgbocdrfg" path="res://Assets/sprites/Run (32x32).png" id="4_ta2my"]
-[ext_resource type="AudioStream" path="res://Assets/sounds/jump.wav" id="snd_JumpSound"]
-[ext_resource type="AudioStream" path="res://Assets/sounds/hurt.wav" id="snd_HurtSound"]
-[ext_resource type="AudioStream" path="res://Assets/sounds/tap.wav" id="snd_BounceSound"]
+[ext_resource type="AudioStream" uid="uid://4o8x6myn1fay" path="res://Assets/sounds/power_up.wav" id="5_8tt7p"]
+[ext_resource type="AudioStream" uid="uid://balwgh52io5is" path="res://Assets/sounds/alex_jauk-single-drum-sound-202977.mp3" id="6_5pkig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0tup"]
 atlas = ExtResource("2_1qvld")
@@ -214,11 +213,13 @@ frame_progress = 0.4933809
 position = Vector2(5, -3)
 shape = SubResource("CircleShape2D_4esgd")
 
-[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("snd_JumpSound")
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1466416364]
+stream = ExtResource("5_8tt7p")
+volume_db = -8.631
 
-[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("snd_HurtSound")
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1691625563]
+stream = ExtResource("6_5pkig")
+volume_db = 9.71
 
-[node name="BounceSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("snd_BounceSound")
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="." unique_id=352384579]
+stream = ExtResource("5_8tt7p")
