@@ -190,16 +190,18 @@ sources/1 = SubResource("TileSetAtlasSource_d5lo2")
 
 [node name="Game" type="Node2D" unique_id=574702287]
 
-[node name="Background" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.25, 0.25)
-scroll_offset = Vector2(0, 93)
-repeat_size = Vector2(256, 0)
-repeat_times = 6
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Sky" type="Sprite2D" parent="Background"]
+[node name="Sky" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("bc_bg")
-centered = false
-scale = Vector2(0.25, 0.25)
+expand_mode = 1
+stretch_mode = 6
 
 [node name="TileMap" type="TileMap" parent="." unique_id=450482732]
 tile_set = SubResource("TileSet_ql73s")

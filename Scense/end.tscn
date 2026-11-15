@@ -4,90 +4,71 @@
 [ext_resource type="Texture2D" path="res://Assets/sprites/backgroundColorFall.png" id="2_bg"]
 [ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_bold"]
 [ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8.ttf" id="4_font"]
-[ext_resource type="Texture2D" path="res://Assets/sprites/trophy.png" id="5_trophy"]
-[ext_resource type="AudioStream" path="res://Assets/sounds/power_up.wav" id="6_win"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trophy"]
-atlas = ExtResource("5_trophy")
-region = Rect2(0, 0, 16, 16)
+[ext_resource type="AudioStream" path="res://Assets/sounds/power_up.wav" id="5_win"]
 
 [node name="End" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_end")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Trophy" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 516.0
-offset_top = 90.0
-offset_right = 636.0
-offset_bottom = 210.0
-texture = SubResource("AtlasTexture_trophy")
-expand_mode = 1
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 230.0
-offset_right = 1076.0
-offset_bottom = 310.0
-theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+[node name="Box" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Center/Box"]
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("3_bold")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "THE END"
 horizontal_alignment = 1
 
-[node name="Text" type="Label" parent="."]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 320.0
-offset_right = 1076.0
-offset_bottom = 400.0
+[node name="Text" type="Label" parent="Center/Box"]
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_font")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 18
 text = "you bounced back!
-thanks for playing :)"
+thanks for playing :)
+
+made by Aflah, Finan and Amjad"
 horizontal_alignment = 1
 
-[node name="Back" type="Button" parent="."]
-layout_mode = 0
-offset_left = 446.0
-offset_top = 430.0
-offset_right = 706.0
-offset_bottom = 490.0
-theme_override_fonts/font = ExtResource("3_bold")
-theme_override_font_sizes/font_size = 28
-text = "MENU"
-
-[node name="Credits" type="Label" parent="."]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 580.0
-offset_right = 1076.0
-offset_bottom = 610.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
+[node name="Back" type="Button" parent="Center/Box"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_font")
-theme_override_font_sizes/font_size = 16
-text = "made by Aflah, Finan and Amjad"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = "Menu"
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_win")
+stream = ExtResource("5_win")
 autoplay = true
 
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Center/Box/Back" to="." method="_on_back_pressed"]

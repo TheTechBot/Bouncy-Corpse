@@ -1,16 +1,8 @@
 extends Control
 
-var time = 0.0
-
 
 func _ready():
-	$Buttons/Start.grab_focus() #so u can also press enter
-
-
-func _process(delta):
-	#make the frog bounce on the dead frog :)
-	time += delta
-	$Frog.position.y = 372 - abs(sin(time * 3)) * 60
+	$Center/Box/Start.grab_focus() #so u can press enter too
 
 
 func _on_start_pressed():
